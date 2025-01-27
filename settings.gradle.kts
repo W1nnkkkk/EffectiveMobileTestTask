@@ -9,6 +9,7 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        mavenLocal()
     }
 }
 dependencyResolutionManagement {
@@ -22,4 +23,5 @@ dependencyResolutionManagement {
 rootProject.name = "EffectiveMobile"
 include(":app")
 include(":domain")
+include(":presentation")
 include(":data")
