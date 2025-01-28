@@ -55,8 +55,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":presentation"))
 
-    val koin_version = "4.0.0"
-    implementation(project.dependencies.platform("io.insert-koin:koin-bom:$koin_version"))
-    implementation("io.insert-koin:koin-core:$koin_version")
-    implementation("io.insert-koin:koin-android:$koin_version")
+    implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.0.0"))
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
 }

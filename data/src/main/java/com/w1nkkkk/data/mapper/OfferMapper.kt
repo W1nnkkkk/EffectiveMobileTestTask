@@ -10,7 +10,7 @@ class OfferMapper {
             id = if(offerDtoModel.id != null) OfferIconType.valueOf(offerDtoModel.id).icon else null,
             title = offerDtoModel.title,
             link = offerDtoModel.link,
-            buttonText = offerDtoModel.button?.get("text").toString()
+            buttonText = offerDtoModel.button?.text
         )
     }
 }
