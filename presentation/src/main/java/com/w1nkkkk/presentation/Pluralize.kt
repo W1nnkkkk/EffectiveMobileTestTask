@@ -10,19 +10,31 @@ fun Int.pluralize(pluralize : Pluralize): String {
     }
 }
 
-abstract class Pluralize {
+sealed class Pluralize() {
     abstract val one : String
     abstract val few : String
     abstract val many : String
+
+    data object HumanPluralize : Pluralize() {
+        override val one: String
+            get() = "человек"
+
+        override val few: String
+            get() = "человека"
+
+        override val many: String
+            get() = one
+    }
+
+    data object VacancyPluralize : Pluralize() {
+        override val one: String
+            get() = "вакансия"
+
+        override val few: String
+            get() = "вакансии"
+
+        override val many: String
+            get() = "вакансий"
+    }
 }
 
-class HumanPluralize : Pluralize() {
-    override val one: String
-        get() = "человек"
-
-    override val few: String
-        get() = "человека"
-
-    override val many: String
-        get() = one
-}

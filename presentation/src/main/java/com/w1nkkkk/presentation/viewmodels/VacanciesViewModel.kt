@@ -1,5 +1,6 @@
 package com.w1nkkkk.presentation.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,24 +16,26 @@ class VacanciesViewModel(
     private val repository: RemoteVacanciesRepository
 ) : ViewModel() {
 
+    init {
+        getVacancies()
+    }
+
     private val _state : MutableLiveData<State> = MutableLiveData()
     val state : LiveData<State> = _state
 
-    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, error ->
-        _state.value = State.Error(error)
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { context, error ->
+        _state.postValue(State.Error(error))
     }
 
-    private val coroutineScope = CoroutineScope(Dispatchers.IO + coroutineExceptionHandler)
-
     fun getVacancies() {
-        coroutineScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             val data = repository.getData()
-            _state.postValue(State.Success(data.first, data.second))
+            _state.postValue(State.Success(data.second, data.first))
         }
     }
 
-    sealed class State {
-        data class Success(val offers: List<Offer>, val vacancies: List<Vacancy>) : State()
-        data class Error(val error: Throwable) : State()
+    sealed class State(open val vacancies: List<Vacancy>) {
+        class Success(vacancies: List<Vacancy>, val offers: List<Offer>, ) : State(vacancies)
+        data class Error(val error: Throwable) : State(emptyList())
     }
 }

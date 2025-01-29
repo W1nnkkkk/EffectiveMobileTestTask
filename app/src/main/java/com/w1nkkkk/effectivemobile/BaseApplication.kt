@@ -1,6 +1,7 @@
 package com.w1nkkkk.effectivemobile
 
 import android.app.Application
+import androidx.fragment.app.Fragment
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

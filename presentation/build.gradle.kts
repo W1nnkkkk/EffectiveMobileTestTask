@@ -54,4 +54,5 @@ dependencies {
     implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.0.0"))
     implementation(libs.koin.core)
     implementation(libs.koin.android)
+    implementation("com.hannesdorfmann:adapterdelegates4:4.3.0")
 }

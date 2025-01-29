@@ -10,15 +10,14 @@ import com.w1nkkkk.domain.LocalVacanciesRepository
 import com.w1nkkkk.domain.RemoteVacanciesRepository
 import com.w1nkkkk.presentation.viewmodels.FavouritesViewModel
 import com.w1nkkkk.presentation.viewmodels.VacanciesViewModel
-import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
-    viewModel<FavouritesViewModel> {
+    single<FavouritesViewModel> {
         FavouritesViewModel(repository = get())
     }
 
-    viewModel<VacanciesViewModel> {
+    single<VacanciesViewModel> {
         VacanciesViewModel(repository = get())
     }
 }
