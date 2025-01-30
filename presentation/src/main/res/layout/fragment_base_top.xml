@@ -34,7 +34,7 @@
                     android:layout_width="10dp"
                     android:layout_height="match_parent"/>
                 <EditText
-                    android:layout_width="250dp"
+                    android:layout_width="230dp"
                     android:layout_height="match_parent"
                     android:hint="Должность, ключевые слова"
                     android:fontFamily="@font/sf_pro_display"
@@ -45,7 +45,7 @@
         </androidx.cardview.widget.CardView>
 
         <Space
-            android:layout_width="40dp"
+            android:layout_width="12dp"
             android:layout_height="match_parent"/>
 
         <androidx.cardview.widget.CardView
@@ -76,6 +76,7 @@
         android:textColor="@color/base_color_text"
         android:textSize="20sp"
         android:text="Вакансии для вас"/>
+
     </LinearLayout>
 
 </FrameLayout>

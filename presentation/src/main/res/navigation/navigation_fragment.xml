@@ -9,12 +9,20 @@
         android:id="@+id/searchFragment"
         android:name="com.w1nkkkk.presentation.fragments.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_plugFragment"
+            app:destination="@id/plugFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favouritesFragment"
         android:name="com.w1nkkkk.presentation.fragments.FavouritesFragment"
         android:label="fragment_favourites"
-        tools:layout="@layout/fragment_favourites" />
+        tools:layout="@layout/fragment_favourites" >
+        <action
+            android:id="@+id/action_favouritesFragment_to_plugFragment"
+            app:destination="@id/plugFragment" />
+    </fragment>
     <fragment
         android:id="@+id/plugFragment"
         android:name="com.w1nkkkk.presentation.fragments.PlugFragment"

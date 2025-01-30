@@ -1,13 +1,14 @@
 package com.w1nkkkk.data.datasource.local
 
 import android.content.Context
+import android.util.Log
 import com.w1nkkkk.data.entity.VacancyDboModel
 
 class FavouritesLocalDatasourceImpl(
     private val context: Context
 ) : FavouritesLocalDatasource {
 
-    val dao = FavouritesDatabase.getInstance(context).getDao()
+    private val dao = FavouritesDatabase.getInstance(context).getDao()
 
     override suspend fun insertVacancy(vacancyDboModel: VacancyDboModel) {
         dao.insertVacancy(vacancyDboModel)

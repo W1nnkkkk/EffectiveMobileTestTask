@@ -1,6 +1,5 @@
 package com.w1nkkkk.presentation.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,6 +10,7 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.math.truncate
 
 class VacanciesViewModel(
     private val repository: RemoteVacanciesRepository
@@ -23,14 +23,18 @@ class VacanciesViewModel(
     private val _state : MutableLiveData<State> = MutableLiveData()
     val state : LiveData<State> = _state
 
-    private val coroutineExceptionHandler = CoroutineExceptionHandler { context, error ->
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, error ->
         _state.postValue(State.Error(error))
-    }
+    } // coroutineExceptionHandler + Dispatchers.IO - не работает в проекте не смог исправить
 
     fun getVacancies() {
         CoroutineScope(Dispatchers.IO).launch {
-            val data = repository.getData()
-            _state.postValue(State.Success(data.second, data.first))
+            try {
+                val data = repository.getData()
+                _state.postValue(State.Success(data.second, data.first))
+            } catch (e : Throwable) {
+                _state.postValue(State.Error(e))
+            }
         }
     }
 

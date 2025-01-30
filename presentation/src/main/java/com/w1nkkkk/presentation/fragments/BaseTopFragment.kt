@@ -23,7 +23,10 @@ class BaseTopFragment : Fragment() {
         viewModel.state.observe(this as LifecycleOwner) {
             when (it) {
                 is VacanciesViewModel.State.Error -> {}
-                is VacanciesViewModel.State.Success -> adapter.setOperationList(it.offers)
+                is VacanciesViewModel.State.Success -> {
+                    adapter.setOperationList(it.offers)
+                    binding.fastFilters.visibility = View.VISIBLE
+                }
             }
         }
     }
@@ -38,6 +41,9 @@ class BaseTopFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (adapter.itemCount == 0) {
+            binding.fastFilters.visibility = View.GONE
+        }
         binding.fastFilters.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         binding.fastFilters.adapter = adapter
     }

@@ -21,6 +21,7 @@ class VacancyMapper {
 
     fun map(vacancy : VacancyDboModel) : Vacancy {
         return Vacancy(
+            id = vacancy.id,
             lookingNumber = vacancy.lookingNumber,
             title = vacancy.title,
             address = vacancy.address,
@@ -34,7 +35,7 @@ class VacancyMapper {
 
     fun mapToDboModel(vacancy : Vacancy ) : VacancyDboModel {
         return VacancyDboModel(
-            id = 0,
+            id = vacancy.id,
             lookingNumber = vacancy.lookingNumber,
             title = vacancy.title,
             address = vacancy.address,

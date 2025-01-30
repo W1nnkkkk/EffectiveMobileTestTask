@@ -23,8 +23,8 @@ val viewModelModule = module {
 }
 
 val favouritesModule = module {
-    factory<FavouritesLocalDatasource> { FavouritesLocalDatasourceImpl(context = get()) }
-    factory<LocalVacanciesRepository> { LocalVacanciesRepositoryImpl(datasource = get()) }
+    single<FavouritesLocalDatasource> { FavouritesLocalDatasourceImpl(context = get()) }
+    single<LocalVacanciesRepository> { LocalVacanciesRepositoryImpl(datasource = get()) }
 }
 
 val vacanciesModule = module {

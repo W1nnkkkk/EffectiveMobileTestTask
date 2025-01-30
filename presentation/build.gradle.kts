@@ -55,4 +55,5 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation("com.hannesdorfmann:adapterdelegates4:4.3.0")
+    implementation("com.google.android.material:material:1.9.0")
 }
